@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music genre classifier</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Sriracha&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: rgb(114, 204, 111);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        font-family: "Sriracha", cursive;
+      }
+      .A,
+      .B,
+      .result {
+        background-color: rgba(186, 57, 190, 0.562);
+        width: 30vw;
+        height: 80vh;
+        border-radius: 7px;
+        text-align: center;
+      }
+      .container {
+        position: relative;
+        top: 35%;
+      }
+
+      .container input {
+        background-color: rgba(255, 255, 255, 0.3);
+        border: 2px solid #eee;
+        border-radius: 5px;
+        width: 55%;
+      }
+
+
+    </style>
+    <div class="A">
+      <h1>Upload</h1>
+      <div class="container">
+        Upload the song<br>
+        <form method="POST" action="{{ url_for('predict')}}">
+          <input type="file" name="path" id="upload"></input>
+          <input type="submit" name="click">
+          </form>
+          <br>
+          <audio controls id="audio">
+            <source src="" type="audio/mp3" id="src">
+          </audio>
+      </div>
+    </div>
+    <div class="B">
+      <h1>Classify</h1>
+      <div class="container">
+        {{output}}
+       
+      </div>
+    </div>
+    <div class="result">
+      <h1>Recommend</h1>
+      <div class="container">
+
+      </div>
+      </div>
+    </div>
+    <script>
+      function handleFiles(event) {
+    var files = event.target.files;
+    $("#src").attr("src", URL.createObjectURL(files[0]));
+    document.getElementById("audio").load();
+}
+
+document.getElementById("upload").addEventListener("change", handleFiles, false);
+    </script>
+</body>
+</html>
