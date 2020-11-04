@@ -14,7 +14,7 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 import tensorflow.keras as keras
 import warnings
 from sklearn.preprocessing import StandardScaler
-import pan
+
 warnings.filterwarnings('ignore')
 
 
@@ -50,7 +50,7 @@ def predict():
 
 
 
-        new_path="F:\\Sem-5\\SGP\\Data\\genres_original\\blues\\"+song_path
+        new_path="F:\Sem-5\SGP\Test\\"+song_path
         
         new_song=new_path
         new_signal,sr=librosa.load(new_song,duration=60)
@@ -117,7 +117,7 @@ def predict():
         print(r)
 
 
-        tags = ['Blues', 'Classical', 'Country', 'Disco', 'HipHop', 'Jazz', 'Mental', 'Pop', 'Reggae', 'Rock']
+        '''tags = ['Blues', 'Classical', 'Country', 'Disco', 'HipHop', 'Jazz', 'Mental', 'Pop', 'Reggae', 'Rock']
         tags = np.array(tags)
 
         colors = ['b','g','c','r','m','k','y','#ff1122','#5511ff','#44ff22']
@@ -136,7 +136,7 @@ def predict():
         plt.xticks(index + bar_width / 2, tags)
         plt.tight_layout()
         fig.autofmt_xdate()
-        plt.savefig("F:\\Sem-5\\SGP\\source\\static\\plot.png")
+        plt.savefig("F:\\Sem-5\\SGP\\source\\static\\plot.png")'''
         return render_template("index.html",output="{}".format(r))
 
 
